@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include<stdio.h>
 using namespace std;
 static bool between(int s, int t, int x)
 {
@@ -31,3 +32,4 @@ int main(int argc, char const *argv[])
     cout << orange_count << endl;
     return 0;
 }
+
