@@ -1,60 +1,92 @@
-#include <iostream>
-#include <cmath>
-#include <string>
-#include <string.h>
-#include <stdlib.h>
-#include <algorithm>
-#include <iomanip>
-#include <assert.h>
-#include <vector>
-#include <cstring>
-#include <map>
-#include <deque>
-#include <queue>
-#include <stack>
-#include <sstream>
-#include <cstdio>
-#include <cstdlib>
-#include <ctime>
-#include <set>
-#include <complex>
-#include <list>
-#include <climits>
-#include <cctype>
-#include <bitset>
-#include <numeric>
-#include <array>
-#include <tuple>
-#include <stdexcept>
-#include <utility>
-#include <functional>
-#include <locale>
-#define     all(v)            v.begin(),v.end()
-#define     mp                     make_pair
-#define     pb                     push_back
-#define     endl                     '\n'
-
-typedef   long long int               ll;
-
-//freopen("input.txt","r",stdin);
-//freopen("output.txt","w",stdout);
+#include <bits/stdc++.h>
 
 using namespace std;
-int main() {
-	int n, SizeOfKnapSack; 
-	cin >> n >> SizeOfKnapSack;
-	vector<pair<int, int>> Value_Wigth(n); 
-	vector<pair<double,int>> ValuePerUnit(n); 
-	for (int i = 0; i < n; i++) {
-		cin >> Value_Wigth[i].first >> Value_Wigth[i].second;
-		ValuePerUnit[i].first = 1.0 * Value_Wigth[i].first / Value_Wigth[i].second; 
-		ValuePerUnit[i].second = Value_Wigth[i].second;
+
+bool mySort(vector<long long> a, vector<long long> b){
+	
+	if (a[0] == b[0]) {
+		if (a[2] == b[2]) {
+			return (a[1] < b[1]);
+		}
+		return (a[2] > b[2]);
 	}
-	sort(ValuePerUnit.begin(), ValuePerUnit.end(),greater<pair<double,int>>());
-	double Res = 0;
-	for (int i = 0; i < ValuePerUnit.size() && SizeOfKnapSack>0; i++) {
-		Res += min(ValuePerUnit[i].second, SizeOfKnapSack)*ValuePerUnit[i].first;
-		SizeOfKnapSack -= min(ValuePerUnit[i].second, SizeOfKnapSack); 
+	return (a[0] < b[0]);
+}
+
+long long go(vector<vector<long long>> worker, long long area){
+	long long n = worker.size();
+	sort(worker.begin(),worker.end(),mySort);
+
+	long long cost = worker.at(0)[1];
+	long long area_done = 0;
+	long long current_worker = 0;
+	long long last = 0;
+
+	for (int i = 1; i < n && area_done<area; ++i)
+	{
+		last = i-1;
+		long long time_gap = worker.at(i)[0]-worker.at(last)[0];
+
+		// cout << "Worker: "<<current_worker << '\n';
+		// cout << "Timegap: "<<time_gap << '\n';
+		
+		area_done += time_gap*(worker.at(current_worker)[2]);
+
+		// cout <<"Cost: "<<cost<< '\n';
+		// cout <<"Area done: "<<area_done<< '\n'<<endl;
+
+		
+		if (area_done>=area)
+		{
+		
+			return cost;
+ 			
+		}
+
+		if (worker.at(current_worker)[2]<worker.at(i)[2])
+		{
+			current_worker = i;
+			cost += worker.at(current_worker)[1];
+		}
+		
 	}
-	cout << fixed << setprecision(4) << Res << endl;
+
+
+	return cost;
+
+
+
+}
+
+
+int main( int argc , char ** argv )
+{
+	ios_base::sync_with_stdio(false) ; 
+	cin.tie(NULL) ; 
+	
+	long long n;
+	long long d;
+	cin>>n>>d;
+	vector<vector<long long>> worker;
+
+	while(n--){
+		long long t,x,y;
+		cin>>t>>x>>y;
+
+		vector<long long> temp;
+		temp.push_back(t);
+		temp.push_back(x);
+		temp.push_back(y);
+
+		worker.push_back(temp);
+	}
+
+	cout << go(worker, d) << '\n';
+
+
+
+	return 0 ; 
+
+
+
 }
