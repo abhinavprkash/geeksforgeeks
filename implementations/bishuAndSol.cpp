@@ -26,19 +26,33 @@
 	int main()
 	{
 		std::ios::sync_with_stdio(false);
+		int n;
+		cin>>n;
+		int arr[n];
+		for (int i = 0; i < n; ++i)
+		{
+			cin>>arr[i];
+		}
 		int T;
 		cin>>T;
 		// cin.ignore(); must be there when using getline(cin, s)
 		while(T--)
 		{
-			int n;
-			cin>>n;
-			int k;
-			cin>>k;
-			if (n>=k*k && (n&1)==(k&1))
-				cout<<"YES"<<endl;
-			else
-				cout<<"NO"<<endl;
+			int p;
+			cin>>p;
+			int count = 0;
+			int sum =0;
+			for (int i = 0; i < n; ++i)
+			{
+				if (arr[i]<=p)
+				{
+					count++;
+					sum += arr[i];
+				}
+			}
+			cout<<count<<" "<<sum<<endl;
+
+			
 		}
 		return 0;
 	}

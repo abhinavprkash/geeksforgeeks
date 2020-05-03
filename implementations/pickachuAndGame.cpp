@@ -26,19 +26,23 @@
 	int main()
 	{
 		std::ios::sync_with_stdio(false);
-		int T;
-		cin>>T;
-		// cin.ignore(); must be there when using getline(cin, s)
-		while(T--)
+		int n;
+		cin>>n;
+		string s1, s2;
+		cin>>s1>>s2;
+		int days =0;
+		for (int i = 0; i < n; ++i)
 		{
-			int n;
-			cin>>n;
-			int k;
-			cin>>k;
-			if (n>=k*k && (n&1)==(k&1))
-				cout<<"YES"<<endl;
-			else
-				cout<<"NO"<<endl;
+			if (s1[i]-64>s2[i]-64)
+			{
+				days = days + (26-s1[i]+s2[i])/13 +(26-s1[i]+s2[i])%13;
+			}
+			else if (s1[i]-64<s2[i]-64)
+			{
+				days = days+(s2[i]-s1[i])/13+(s2[i]-s1[i])%13;
+			}
+			else continue;
 		}
+		cout<<days<<endl;
 		return 0;
 	}
