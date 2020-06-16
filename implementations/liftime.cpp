@@ -29,10 +29,21 @@
 		int T;
 		cin>>T;
 		// cin.ignore(); must be there when using getline(cin, s)
-		while(T--)
-		{
-			
+		while(T--){			
+			ll a, b;
+			ll sum=0;
+			ll current =0;
+			ll n, q;
+			cin>>n>>q;
+			while(q--) {
+			    cin>>a>>b;
+			    sum+=abs(a-current);
+			    current = a;
+			    sum+=abs(b-current);
+			    current  = b;
+			}
+			cout<<sum<<"\n";
+
 		}
 		return 0;
 	}
-	

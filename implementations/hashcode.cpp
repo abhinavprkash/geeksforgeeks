@@ -23,16 +23,15 @@
 	#define s second
 	
 	using namespace std;
-	int main()
+	int main(int argc, char const *argv[])
 	{
-		std::ios::sync_with_stdio(false);
-		int T;
-		cin>>T;
-		// cin.ignore(); must be there when using getline(cin, s)
-		while(T--)
-		{
-			
+		int T, vector<int> L1,vector<int> L2,int L,vector<int> b,D,N;
+		cin>>D;
+		cin>>N;
+		for(L = N; L>=0;L--) {
+			for(T=D-2;T>0;T--){
+				for()
+			}
 		}
 		return 0;
 	}
-	

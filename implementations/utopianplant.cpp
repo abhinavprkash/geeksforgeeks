@@ -23,6 +23,17 @@
 	#define s second
 	
 	using namespace std;
+
+	int cal_height(int n){
+		int height =1;
+		for (int i = 1; i <= n; ++i)
+			if (i%2 !=0)//spring
+				height = height*2;
+			else
+				height = height+1;
+		return height;
+	}
+
 	int main()
 	{
 		std::ios::sync_with_stdio(false);
@@ -31,8 +42,10 @@
 		// cin.ignore(); must be there when using getline(cin, s)
 		while(T--)
 		{
-			
+			int n;
+			cin>>n;
+			int height = cal_height(n);
+			cout<<height<<endl;
 		}
 		return 0;
 	}
-	

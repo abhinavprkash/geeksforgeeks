@@ -26,13 +26,33 @@
 	int main()
 	{
 		std::ios::sync_with_stdio(false);
-		int T;
-		cin>>T;
-		// cin.ignore(); must be there when using getline(cin, s)
-		while(T--)
+		cin.tie(NULL);
+		int n;
+		cin>>n;
+		vector<int> squares(n);
+		for (int i1 = 0; i1 < n; i1++)
 		{
-			
+			cin>>squares[i1];
 		}
+		int d, m;
+		cin>>d>>m;
+		int ct=0; int sum=0;
+		int max = n-m;
+		int j ;
+		for (int i = 0; i <= max; ++i)
+		{
+			sum = 0;
+			j=i;
+			for (int k = 0; k <m; ++k)
+		{
+			sum+=squares[j];
+			++j;
+		}
+		if (sum == d)
+		{
+			ct++;
+		}
+	}
+		cout<<ct<<endl;
 		return 0;
 	}
-	
