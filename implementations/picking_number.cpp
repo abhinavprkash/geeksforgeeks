@@ -26,13 +26,22 @@
 	int main()
 	{
 		std::ios::sync_with_stdio(false);
-		int T;
-		cin>>T;
-		// cin.ignore(); must be there when using getline(cin, s)
-		while(T--)
-		{
-			
+		int n;
+		cin>>n;
+		vector<int> arr(n);
+		for(auto&e :arr)
+			cin>>e;
+		sort(arr.begin(), arr.end());
+		std::vector<int> count(n,1);
+		for(int i = 0; i < n; ++i) {
+			for (int j = i+1; j <n; ++j)
+			{
+				if (abs(arr[j]-arr[i])<=1)
+					++count[i];
+				else	
+					break;
+			}
 		}
+		cout<<*std::max_element(count.begin(), count.end());
 		return 0;
 	}
-	

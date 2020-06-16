@@ -26,13 +26,18 @@
 	int main()
 	{
 		std::ios::sync_with_stdio(false);
-		int T;
-		cin>>T;
-		// cin.ignore(); must be there when using getline(cin, s)
-		while(T--)
+		int year;
+		cin>>year;
+		if (year ==1918)
 		{
-			
+			cout<<"26.09.1918\n";
+		}else{
+			if ((year <1918 && year%4==0)||(year%4==0 && year%100!=0)||year%400==0)
+			{
+				cout<<"12.09."<<year<<'\n';
+			}else{
+				cout<<"13.09."<<year<<'\n';
+			}
 		}
 		return 0;
 	}
-	

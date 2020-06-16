@@ -26,13 +26,25 @@
 	int main()
 	{
 		std::ios::sync_with_stdio(false);
-		int T;
-		cin>>T;
-		// cin.ignore(); must be there when using getline(cin, s)
-		while(T--)
+		int b,n , m, keyboard[10001], mouse[10001],a, result =-1;
+		cin>>b>>n>>m;
+		for (int i = 0; i < n; ++i)
 		{
-			
+			cin>>keyboard[i];
 		}
+		for (int i = 0; i < m; ++i)
+		{
+			cin>>mouse[i];
+		}
+		for (int i = 0; i < n; ++i)
+		{
+			for(int j = 0; j < m; ++j) {
+				if (keyboard[i]+mouse[j]<=b)
+				{
+					result = max(result,keyboard[i]+mouse[j]);
+				}
+			}
+		}
+		cout<<result<<endl;
 		return 0;
 	}
-	
