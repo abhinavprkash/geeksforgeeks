@@ -1,4 +1,5 @@
-//B. Codeforces Subsequences
+//E - Red Scarf
+
 
 #include <bits/stdc++.h>
 #include <cstdio>
@@ -27,36 +28,18 @@ using namespace std;
 int main()
 {
 	std::ios::sync_with_stdio(false);
-	ll k;
-	cin >> k;
-	string s = "codeforces";
-
-	ll val[11];
-	for (ll i = 0; i < 11; ++i)
+	int n;
+	cin>>n;
+	vi arr(n);
+	int val =0;
+	for (int i = 0; i < n; ++i)
 	{
-		val[i] = 1;
+		cin>>arr[i];
+		val ^= arr[i];
 	}
-
-	ll prod = 1;
-	while (prod < k) {
-		for (ll i = 0; i < 10; ++i)
-		{
-			val[i]++;
-			prod = prod / (val[i] - 1);
-			prod = prod * val[i];
-
-			if (prod >= k) {
-				break;
-			}
-		}
-	}
-	for (ll i = 0; i < 10; ++i)
+	for (int i = 0; i < n; ++i)
 	{
-		while (val[i] > 0) {
-			cout << s[i];
-			val[i]--;
-		}
+		cout<<(val^arr[i])<<endl;
 	}
-	cout << "\n";
 	return 0;
 }

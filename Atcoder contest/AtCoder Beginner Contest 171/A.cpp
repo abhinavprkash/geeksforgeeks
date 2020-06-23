@@ -1,4 +1,4 @@
-//B. Codeforces Subsequences
+//A - αlphabet
 
 #include <bits/stdc++.h>
 #include <cstdio>
@@ -27,36 +27,11 @@ using namespace std;
 int main()
 {
 	std::ios::sync_with_stdio(false);
-	ll k;
-	cin >> k;
-	string s = "codeforces";
-
-	ll val[11];
-	for (ll i = 0; i < 11; ++i)
-	{
-		val[i] = 1;
-	}
-
-	ll prod = 1;
-	while (prod < k) {
-		for (ll i = 0; i < 10; ++i)
-		{
-			val[i]++;
-			prod = prod / (val[i] - 1);
-			prod = prod * val[i];
-
-			if (prod >= k) {
-				break;
-			}
-		}
-	}
-	for (ll i = 0; i < 10; ++i)
-	{
-		while (val[i] > 0) {
-			cout << s[i];
-			val[i]--;
-		}
-	}
-	cout << "\n";
+	char c;
+	cin>>c;
+	if (c>= 65 && c<=90)
+		cout<<'A'<<endl;
+	else 
+		cout<<'a'<<endl;
 	return 0;
 }
