@@ -1,6 +1,4 @@
-//number of triangles
-
-
+//B - Minor Change
 #include <bits/stdc++.h>
 #include <cstdio>
 #include <cstring>
@@ -22,30 +20,31 @@
 #define mem(a,val) memset(a,val,sizeof(a))
 #define eb emplace_back
 #define f first
-#define s second
+
 
 using namespace std;
+
+int minimum_operations(string& A, string& B)
+{
+	int n = A.length();
+	int count =0;
+	for (int i = 0; i < n; ++i)
+	{
+		if (A[i] == B[i])
+		{
+			continue;
+		}
+		else{
+			count++;
+		}
+	}
+	return count;
+} 
 int main()
 {
 	std::ios::sync_with_stdio(false);
-	ll t=1LL;
-cin>>t;
- 
- 
-while(t--)
-{
-  ll n,a,b;
-  cin>>n>>a>>b;
-  n-=2;
-  if(n==3){cout<<1<<"\n";continue;}
-  ll ans=n*(n-4);
-  ans=max(ans,0LL);
-  ans+=n;
-  ans-=(n-4);
-  ll tmp=min(n+2-abs(a-b),abs(a-b));
-  if(tmp==2)ans-=(n-3);
-  else if(tmp>2)ans-=(n-4);
-  // else ans-=(4*(n-4)+6);
-  cout<<ans<<"\n";
-}
+	string s, t;
+	cin>>s>>t;
+	cout<<minimum_operations(s, t)<<endl;
+	return 0;
 }

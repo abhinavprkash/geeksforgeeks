@@ -1,6 +1,4 @@
-//number of triangles
-
-
+//A - Calc
 #include <bits/stdc++.h>
 #include <cstdio>
 #include <cstring>
@@ -28,24 +26,9 @@ using namespace std;
 int main()
 {
 	std::ios::sync_with_stdio(false);
-	ll t=1LL;
-cin>>t;
- 
- 
-while(t--)
-{
-  ll n,a,b;
-  cin>>n>>a>>b;
-  n-=2;
-  if(n==3){cout<<1<<"\n";continue;}
-  ll ans=n*(n-4);
-  ans=max(ans,0LL);
-  ans+=n;
-  ans-=(n-4);
-  ll tmp=min(n+2-abs(a-b),abs(a-b));
-  if(tmp==2)ans-=(n-3);
-  else if(tmp>2)ans-=(n-4);
-  // else ans-=(4*(n-4)+6);
-  cout<<ans<<"\n";
-}
+	int T;
+	cin >> T;
+	int sum = T + T*T + T*T*T;
+	cout<<sum;
+	return 0;
 }
