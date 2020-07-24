@@ -24,17 +24,34 @@
 
 using namespace std;
 
-void traverse(int *arr, int n) {
-  for (int i = 0; i < n; ++i)
-  {
-    printf("%d",arr[i] ); 
-  }
-  printf("\n");
-  int *p;
-  for (int p = arr[0]; p <=
-       arr[n]; ++p)
-  {
-    printf("%d\n", p);
-  }
+void eulerPhi(int n){
+	int phi[n+1];
+
+	for (int i = 1; i <=n; ++i)
+	{
+		phi[i] = i;
+	}
+
+	for (int i = 2; i <= n; ++i)
+	{
+		if (phi[i] == i)
+		{
+			phi[i] = i-1;
+			for (int j = 2*i; j <=n; j+=i)
+			{
+				phi[j] = (phi[j]*(i-1))/i;
+			}
+		}
+	}
+	for (int i = 1; i <= n; ++i)
+	{
+		cout<<"Euler Totient Phi For"<< i <<"Is :"<<phi[i]<<endl;
+	}
 }
 
+int main()
+{
+	std::ios::sync_with_stdio(false);
+	eulerPhi(10);
+	return 0;
+}

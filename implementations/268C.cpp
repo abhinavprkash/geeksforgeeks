@@ -1,3 +1,5 @@
+//C. Beautiful Sets of Points
+
 
 #include <bits/stdc++.h>
 #include <cstdio>
@@ -23,18 +25,15 @@
 #define s second
 
 using namespace std;
-
-void traverse(int *arr, int n) {
-  for (int i = 0; i < n; ++i)
-  {
-    printf("%d",arr[i] ); 
-  }
-  printf("\n");
-  int *p;
-  for (int p = arr[0]; p <=
-       arr[n]; ++p)
-  {
-    printf("%d\n", p);
-  }
+int main()
+{
+	std::ios::sync_with_stdio(false);
+	int a, b;
+	cin>>a>>b;
+	cout<<min(a,b)+1<<endl;
+	for (int i = 0; i <= min(a,b); ++i)
+	{
+		cout<<i<<" "<<min(a,b)- i<<endl;
+	}
+	return 0;
 }
-
