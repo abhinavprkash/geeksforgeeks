@@ -23,40 +23,35 @@
 	#define s second
 	
 	using namespace std;
-	
 
-int main() {
-    /* Enter your code here. Read input from STDIN. Print output to STDOUT */ 
-    int T,N;
-    int ok=0;
-    vector <long int> vec;
-    vector <string> col;
-    cin >> T;
-    
-    for(int i=0;i<T;i++) {
-    cin >> N;
-        for(int j=0;j<N;j++) {
-            long int n;
-            cin >> n;
-            vec.push_back(n);
-            
-            
-        }
-        for(auto c:vec) {
-            auto q=sqrt(c);
-            if(static_cast<long long>(q)%(1)==0&&static_cast<long long>(q)>=0) 
-            ok++;
-        
-        }
-        if(static_cast<unsigned long int>(ok)==vec.size())
-            col.push_back("Yes");
-        else
-            col.push_back("No");
-            
-    }
- for(auto d:col) {
- cout << d << endl;   
- }
-       
-    return 0;
-}
+	void greater(){
+		cin>>n;
+		int arr[n];
+		for (int i = 0; i < n; ++i)
+		{
+			cin>>arr[i];
+		}
+		int temp = 0;
+		if (arr[i]<arr[i+1])
+		{
+			temp = arr[i+1];
+			arr[i+1] = arr[i];
+			arr[i] = temp;
+		}
+		return arr[i];
+
+	}
+
+	int main()
+	{
+		
+		std::ios::sync_with_stdio(false);
+		int T;
+		cin>>T;
+		// cin.ignore(); must be there when using getline(cin, s)
+		while(T--)
+		{
+			sort(arr.begin(), arr.end(), greater());
+		}
+		return 0;
+	}
