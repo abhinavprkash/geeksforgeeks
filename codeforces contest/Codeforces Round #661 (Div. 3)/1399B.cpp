@@ -22,28 +22,38 @@
 #define f first
 #define s second
 
+
 using namespace std;
 
+void solve() {
+	ll n;
+	cin >> n;
+	vi a(n), b(n);
+	for (auto &it : a)
+		cin >> it;
+	for (auto &it : b)
+		cin >> it;
+
+	int minima_a = *min_element(a.begin(), a.end());
+	int minima_b = *min_element(b.begin(), b.end());
+
+	ll ans =0;
+	for (int i = 0; i < n; ++i)
+	{
+		ans += max(a[i]-minima_a, b[i]-minima_b);
+	}
+	cout<<ans<<endl;
+}
 
 int main()
-{ 
+{
 	std::ios::sync_with_stdio(false);
-	int n, q;
-	cin >> n >> q;
-
-	vi arr(n);
-	for (int i = 0; i < n; ++i) {
-		cin >> arr[i];
+	int T;
+	cin >> T;
+	// cin.ignore(); must be there when using getline(cin, s)
+	while (T--)
+	{
+		solve();
 	}
-	for (int i = 0; i < q; ++i) {
-		int left, right;
-		set<int> s;
-		cin >> left >> right;
-		for (int j = left; j <= right; ++j) {
-			s.insert(arr[j - 1]);
-		}
-		cout << s.size() << '\n';
-	}
-
 	return 0;
 }

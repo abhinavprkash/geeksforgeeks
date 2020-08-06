@@ -23,27 +23,27 @@
 #define s second
 
 using namespace std;
-
-
 int main()
-{ 
+{
 	std::ios::sync_with_stdio(false);
-	int n, q;
-	cin >> n >> q;
-
-	vi arr(n);
-	for (int i = 0; i < n; ++i) {
-		cin >> arr[i];
-	}
-	for (int i = 0; i < q; ++i) {
-		int left, right;
-		set<int> s;
-		cin >> left >> right;
-		for (int j = left; j <= right; ++j) {
-			s.insert(arr[j - 1]);
+	int T;
+	cin >> T;
+	// cin.ignore(); must be there when using getline(cin, s)
+	while (T--)
+	{
+		int x,y,z;
+		cin>>x>>y>>z;
+		if (x>y) swap(x,y);
+		if (x>z) swap(x,z);
+		if (y>z) swap(y,z);
+		if (y ==z)
+		{
+			cout<<"YES"<<endl;
+			cout<<x<<" "<<x<<" "<<z<<endl;
 		}
-		cout << s.size() << '\n';
+		else{
+			cout<<"NO"<<endl;
+		}
 	}
-
 	return 0;
 }
