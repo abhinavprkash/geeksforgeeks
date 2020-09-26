@@ -21,37 +21,26 @@
 #define eb emplace_back
 #define f first
 #define s second
-#define f1(i,a,b) for(int i=a;i<b;i++)
 
 using namespace std;
+int dp[101][2];
 
-const int _N = 3005;
-int _a[_N];
-long long _cnt[_N], _cnt_2[_N];
-
-void solve() {
-	register int i, j, n, x;
-	register long long ans = 0ll, sum = 0ll;
-	cin >> n;
-	for (i = 1; i <= n; ++i) _cnt[i] = 0ll;
-	for (i = 1; i <= n; ++i) {
-		cin >> _a[i];
-		++_cnt[_a[i]];
+int countString(int n, int last_digit){
+	if (n == 0)
+	{
+		return 0;
 	}
-	for (i = 1; i < n; ++i) {
-		_cnt[_a[i]] -= 2;
-		ans = 0ll;
-		for (j = 1; j <= n; ++j) _cnt_2[j] = 0ll;
-		for (j = i + 1; j < n; ++j) {
-			x = _a[j];
-			if (x == _a[i]) sum += ans;
-			ans -= _cnt_2[x] * (_cnt[x] - _cnt_2[x]);
-			++_cnt_2[x];
-			ans += _cnt_2[x] * (_cnt[x] - _cnt_2[x]);
-		}
-		++_cnt[_a[i]];
+	if (n==1)
+	{
+		return 2;
 	}
-	cout << sum << '\n';
+	if (last_digit == 0)
+	{
+		return countString(n-1, 0)+ countString(n-1, 1);
+	}
+	else{
+		return countString(n-1,0);
+	}
 }
 
 
@@ -63,7 +52,7 @@ int main()
 	// cin.ignore(); must be there when using getline(cin, s)
 	while (T--)
 	{
-		solve();
+
 	}
 	return 0;
 }

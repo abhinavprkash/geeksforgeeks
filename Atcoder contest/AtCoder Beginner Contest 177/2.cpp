@@ -23,43 +23,27 @@
 #define s second
 
 using namespace std;
-
-void solve() {
-	int p, f;
-	cin >> p >> f;
-	int cs, cw, s, w;
-	cin >> cs >> cw >> s >> w;
-	int  ans = 0;
-	if (w < s)
-	{
-		swap(w, s);
-		swap(cs, cw);
-	}
-	for (int i = 0; i <= cs; ++i)
-	{
-		if (i*s > p)
-		{
-			break;
-		}
-		int current = i, current_w = min(cw, (p-i*s)/w);
-		int temp = min(cs - current, f/s);
-		int temp2 = min((f-s*temp)/w, cw - current_w);
-
-		ans = max(ans, current_w+ current + temp+temp2);
-	}
-	cout<<ans<<endl;
-
-}
-
 int main()
 {
 	std::ios::sync_with_stdio(false);
-	int T;
-	cin >> T;
-	// cin.ignore(); must be there when using getline(cin, s)
-	while (T--)
-	{
-		solve();
+	string s, t;
+	cin >> s >> t;
+
+	int ss = s.size();
+	int ts = t.size();
+
+	int ans = 1000;
+	for (int i = 0; i < ss - ts + 1; ++i) {
+		int cnt = ts;
+		for (int j = 0; j < ts; ++j) {
+			if (s[i + j] == t[j]) {
+				--cnt;
+			}
+		}
+		ans = min(ans, cnt);
 	}
+
+	cout << ans << '\n';
+
 	return 0;
 }

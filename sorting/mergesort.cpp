@@ -1,3 +1,4 @@
+
 #include <bits/stdc++.h>
 #include <cstdio>
 #include <cstring>
@@ -23,49 +24,20 @@
 
 using namespace std;
 
-string s;
-int x;
-
-string func(string s) {
-	string res = s;
-	for (int i = 0; i < s.size(); ++i)
-	{
-		if (i - x >= 0 && s[i - x] == '1' || i + x < s.size() && s[i + x] == '1')
-			res[i] = '1';
-		else
-			res[i] = '0';
-	}
-	return res;
-}
-
-void solve(){
-
-	cin>>s>>x;
-	int n= s.size();
-	string ns = string(n,'1');
-	for (int i = 0; i < n; ++i)
-	{
-		if (s[i]=='0')
-		{
-			if (i-x>=0) ns[i-x] = '0';
-			if (i+x < n) ns[i+x] = '0';
-		}
-	}
-	if (func(ns) == s)
-		cout<<ns<<endl;
-	else
-		cout<<-1<<endl;
-}
-
 int main()
 {
 	std::ios::sync_with_stdio(false);
-	int T;
-	cin >> T;
-	// cin.ignore(); must be there when using getline(cin, s)
-	while (T--)
+	ll n;
+	cin >> n;
+	ll arr[n];
+	for (ll i = 0; i < n; ++i)
 	{
-		solve();
+		cin >> arr[i];
+	}
+	sort(arr, arr+n);
+	for (ll i = 0; i < n; ++i)
+	{
+		cout<<arr[i]<<" ";
 	}
 	return 0;
 }
