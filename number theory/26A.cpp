@@ -1,3 +1,8 @@
+//A number is called almost prime if it has exactly two distinct prime divisors. For example, numbers 6, 18, 24 are almost prime, while 4, 8, 9, 42 are not. Find the amount of almost prime numbers which are between 1 and n, inclusive.
+
+
+//A. Almost Prime
+
 
 #include <bits/stdc++.h>
 #include <cstdio>
@@ -25,21 +30,27 @@
 using namespace std;
 int main()
 {
-	freopen("output2.out", "w", stdout);
+	std::ios::sync_with_stdio(false);
 	int n;
 	cin >> n;
-	for (int i = 0; i <= 9; ++i)
+	int count = 0;
+	bool b[3001] = {false};
+	int pfactors[3001] = {0};
+	for (int i = 2; i <= n; ++i)
 	{
-		cout << "190500" << i << "@kiit.ac.in" << endl;
+		if (!b[i])
+		{
+			for (int j = i + i; j <= n; j += i)
+			{
+				b[j] = true;
+				pfactors[j] += 1;
+			}
+		}
+		if (pfactors[i] == 2)
+		{
+			count += 1;
+		}
 	}
-	for (int i = 10; i <= 99; ++i)
-	{
-		cout << "19050" << i << "@kiit.ac.in" << endl;
-	}
-	for (int i = 100; i <= 999; ++i)
-	{
-		cout << "1905" << i << "@kiit.ac.in" << endl;
-	}
-
+	cout << count << endl;
 	return 0;
 }

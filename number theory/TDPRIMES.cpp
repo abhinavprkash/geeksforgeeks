@@ -1,3 +1,4 @@
+//TDPRIMES - Printing some primes
 
 #include <bits/stdc++.h>
 #include <cstdio>
@@ -23,23 +24,36 @@
 #define s second
 
 using namespace std;
+
+const int n = 1e8;
+vector<char> is_prime(n + 1, true);
+vi primes;
+
 int main()
 {
-	freopen("output2.out", "w", stdout);
-	int n;
-	cin >> n;
-	for (int i = 0; i <= 9; ++i)
-	{
-		cout << "190500" << i << "@kiit.ac.in" << endl;
-	}
-	for (int i = 10; i <= 99; ++i)
-	{
-		cout << "19050" << i << "@kiit.ac.in" << endl;
-	}
-	for (int i = 100; i <= 999; ++i)
-	{
-		cout << "1905" << i << "@kiit.ac.in" << endl;
-	}
+	std::ios::sync_with_stdio(false);
+	is_prime[0] = is_prime[1] = false;
 
+	for (int i = 2; i * i <= n; ++i)
+	{
+		if (is_prime[i])
+		{
+			for (int j = i * i; j <= n; j += i)
+			{
+				is_prime[j] = false;
+			}
+		}
+	}
+	for (int i = 2; i <= n; ++i)
+	{
+		if (is_prime[i])
+		{
+			primes.push_back(i);
+		}
+	}
+	for (int i = 1; i < primes.size(); i += 100)
+	{
+		cout << primes[i - 1] << endl;
+	}
 	return 0;
 }
