@@ -1,0 +1,91 @@
+#include<stdio.h>
+
+void merge(int arr[], int l, int m, int r)
+{
+	int i, j, k;
+	int n1 = m - l + 1;
+	int n2 = r - m;
+
+	int L[n1], R[n2];
+	for (i = 0; i < n1; i++)
+		L[i] = arr[l + i];
+	for (j = 0; j < n2; j++)
+		R[j] = arr[m + 1 + j];
+
+
+	i = 0;
+	j = 0;
+	k = l;
+	while (i < n1 && j < n2) {
+		if (L[i] <= R[j]) {
+			arr[k] = L[i];
+			i++;
+		}
+		else {
+			arr[k] = R[j];
+			j++;
+		}
+		k++;
+	}
+	while (i < n1) {
+		arr[k] = L[i];
+		i++;
+		k++;
+	}
+
+	while (j < n2) {
+		arr[k] = R[j];
+		j++;
+		k++;
+	}
+}
+void mergeSort(int arr[], int l, int r)
+{
+	if (l < r) {
+		int m = l + (r - l) / 2;
+		mergeSort(arr, l, m);
+		mergeSort(arr, m + 1, r);
+
+		merge(arr, l, m, r);
+	}
+}
+
+int main() {
+	int n;
+	printf("Enter size of the array\n");
+	scanf("%d", &n);
+	int arr[n];
+	int i, f, l , mid, search;
+	printf("Enter the elements\n");
+	for ( i = 0; i < n; ++i)
+	{
+		scanf("%d", &arr[i]);
+	}
+	printf("Now everything will be sorted in case you forgot to input in ascending order\n");
+	mergeSort(arr, 0, n-1);
+	printf("Enter the number to be searched\n");
+	scanf("%d", &search);
+
+	f = 0;
+	l = n - 1;
+	mid = (f + l) / 2;
+	while (f <= l) {
+		if (arr[mid] < search)
+			f = mid + 1;
+		else if (arr[mid] == search) {
+			printf("%d found at %d\n", search, mid + 1 );
+			break;
+		}
+		else
+			l = mid - 1;
+		mid = (f + l) / 2;
+
+	}
+	if (f > l)
+	{
+		printf("Not found! %d isn't present in the list.\n", search);
+
+	}
+	return 0;
+
+}

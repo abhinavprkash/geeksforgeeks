@@ -23,6 +23,24 @@
 #define s second
 
 using namespace std;
+
+void solve() {
+	int n;
+	cin >> n;
+	vi arr(n);
+	for (int i = 0; i < n; ++i)
+	{
+		cin >> arr[i];
+	}
+	while(arr.back() == 0)
+		arr.pop_back();
+	reverse(arr.begin(), arr.end());
+	while(arr.back() == 0)
+		arr.pop_back();
+	cout<<count(arr.begin(),arr.end(), 0)<<endl;
+
+}
+
 int main()
 {
 	std::ios::sync_with_stdio(false);
@@ -31,7 +49,7 @@ int main()
 	// cin.ignore(); must be there when using getline(cin, s)
 	while (T--)
 	{
-
+		solve();
 	}
 	return 0;
 }
