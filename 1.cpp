@@ -31,7 +31,7 @@
     // cin.ignore(); must be there when using getline(cin, s)
     while(T--)
     {
-      
+      cout << "Hello World!!" << endl;
     }
     return 0;
   }
